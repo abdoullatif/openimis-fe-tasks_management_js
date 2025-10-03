@@ -47,24 +47,18 @@ const TASK_PROJECTION = () => [
   'dateCreated',
   'isDeleted',
   'taskGroup{id, code, completionPolicy}',
+  'executorsStatus{userId, username, fullName, status, statusDisplay}',
   'data',
   'jsonExt',
 ];
 
 const TASK_HISTORY_FULL_PROJECTION = () => [
   'id',
-  'entityId',
   'source',
   'status',
-  'executorActionEvent',
   'businessEvent',
   'businessStatus',
-  'dateCreated',
-  'isDeleted',
-  'taskGroup{id, code, completionPolicy, taskexecutorSet {edges{node{id, user{id}}}}}',
-  'data',
-  'businessData',
-  'jsonExt',
+  'taskGroup{id, code, completionPolicy}',
   'version',
   'dateUpdated',
 ];
@@ -118,7 +112,7 @@ export function fetchTaskGroups(modulesManager, params) {
 }
 
 export function fetchTasks(modulesManager, params) {
-  const payload = formatPageQueryWithCount('task', params, TASK_PROJECTION());
+  const payload = formatPageQueryWithCount('taskList', params, TASK_PROJECTION());
   return graphql(payload, ACTION_TYPE.SEARCH_TASKS);
 }
 

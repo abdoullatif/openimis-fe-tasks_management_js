@@ -14,6 +14,7 @@
   "tasksManagement.task.dateCreated.after": "Date Created From",
   "tasksManagement.task.dateCreated.before": "Date Created To",
   "tasksManagement.task.assignee": "Task Group",
+  "tasksManagement.task.executors": "Validators",
   "tasksManagement.task.businessStatus": "Business Status",
   "tasksManagement.task.status": "Status",
   "tasksManagement.task.version": "Version",

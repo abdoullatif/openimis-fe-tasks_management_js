@@ -141,13 +141,13 @@ function reducer(
         ...state,
         fetchingTasks: false,
         fetchedTasks: true,
-        tasks: parseData(action.payload.data.task)?.map((task) => ({
+        tasks: parseData(action.payload.data.taskList)?.map((task) => ({
           ...task,
           id: decodeId(task.id),
         })),
-        tasksPageInfo: pageInfo(action.payload.data.task),
+        tasksPageInfo: pageInfo(action.payload.data.taskList),
         tasksTotalCount:
-          action.payload.data.task ? action.payload.data.task.totalCount : null,
+          action.payload.data.taskList ? action.payload.data.taskList.totalCount : null,
         errorTasks: formatGraphQLError(action.payload),
       };
     case SUCCESS(ACTION_TYPE.SEARCH_TASK_HISTORY):

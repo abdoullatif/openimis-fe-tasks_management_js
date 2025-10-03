@@ -7,8 +7,11 @@ import {
   useModulesManager,
   useTranslations,
 } from '@openimis/fe-core';
-import { IconButton, Tooltip } from '@material-ui/core';
+import { IconButton, Tooltip, Chip, Box } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import CancelIcon from '@material-ui/icons/Cancel';
 import {
   RIGHT_TASKS_MANAGEMENT_SEARCH, DEFAULT_PAGE_SIZE, ROWS_PER_PAGE_OPTIONS, TASK_STATUS, TASK_ROUTE,
 } from '../constants';
@@ -56,6 +59,7 @@ function TaskSearcher({
       'task.type',
       'task.entity',
       'task.assignee',
+      'task.executors',
       'task.dateCreated',
       'task.status',
     ];
@@ -74,11 +78,60 @@ function TaskSearcher({
     ['status', true],
   ];
 
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case 'APPROVED':
+        return <CheckCircleIcon style={{ fontSize: 16, color: '#4caf50' }} />;
+      case 'PENDING':
+        return <HourglassEmptyIcon style={{ fontSize: 16, color: '#ff9800' }} />;
+      case 'REJECTED':
+      case 'FAILED':
+        return <CancelIcon style={{ fontSize: 16, color: '#f44336' }} />;
+      default:
+        return null;
+    }
+  };
+
+  const formatExecutors = (task) => {
+    const executors = task?.executorsStatus || [];
+    
+    if (executors.length === 0) {
+      return '-';
+    }
+
+    return (
+      <Box display="flex" flexWrap="wrap" gap={0.5}>
+        {executors.map((executor, index) => (
+          <Tooltip 
+            key={index} 
+            title={`${executor.fullName} - ${executor.statusDisplay}`}
+          >
+            <Chip
+              size="small"
+              icon={getStatusIcon(executor.status)}
+              label={executor.username}
+              variant="outlined"
+              style={{ 
+                margin: 2,
+                backgroundColor: 
+                  executor.status === 'APPROVED' ? '#e8f5e9' :
+                  executor.status === 'PENDING' ? '#fff3e0' :
+                  executor.status === 'REJECTED' || executor.status === 'FAILED' ? '#ffebee' :
+                  'transparent'
+              }}
+            />
+          </Tooltip>
+        ))}
+      </Box>
+    );
+  };
+
   const itemFormatters = () => [
     (task) => task.source,
     (task) => trimBusinessEvent(task.businessEvent),
     (task) => task.entityString,
     (task) => task?.taskGroup?.code,
+    (task) => formatExecutors(task),
     (task) => formatDateTimeFromISO(task?.dateCreated),
     (task) => task.status,
     (task) => (

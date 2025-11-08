@@ -39,6 +39,7 @@ function TasksMainMenu(props) {
     <MainMenuContribution
       {...props}
       header={formatMessage(props.intl, 'tasksManagement', 'tasksMainMenu')}
+      icon={<AssignmentIcon />}
       entries={entries}
       menuId="TasksMainMenu"
     />

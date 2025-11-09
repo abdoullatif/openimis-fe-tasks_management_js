@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
   Form, Helmet,
   useHistory,
@@ -30,9 +30,9 @@ function TaskDetailsPage({
   submittingMutation,
   mutation,
   clearTask,
-  hideBody = false,
 }) {
   const modulesManager = useModulesManager();
+  const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
   const { formatMessage } = useTranslations('tasksManagement', modulesManager);
@@ -60,9 +60,7 @@ function TaskDetailsPage({
     }
   }, [task]);
 
-  useEffect(() => () => {
-    clearTask();
-  }, []);
+  useEffect(() => () => clearTask(), []);
 
   const doesTaskChange = () => {
     if (_.isEqual(task, editedTask)) return false;
@@ -89,9 +87,7 @@ function TaskDetailsPage({
 
   const panels = () => {
     const panels = [];
-    if (!hideBody) {
-      panels.push(TaskPreviewPanel);
-    }
+    panels.push(TaskPreviewPanel);
     if (task && isCurrentUserInTaskGroup() && task.status === taskStatus.ACCEPTED) {
       panels.push(TaskApprovementPanel);
     }

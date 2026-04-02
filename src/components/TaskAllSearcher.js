@@ -127,9 +127,9 @@ function TaskAllSearcher({
   };
 
   const itemFormatters = () => [
-    (task) => task.source,
-    (task) => trimBusinessEvent(task.businessEvent),
-    (task) => task.entityString,
+    (task) => task?.sourceLabel || task?.source,
+    (task) => task?.typeLabel || trimBusinessEvent(task?.businessEvent),
+    (task) => task?.entityLabel || task?.entityString,
     (task) => task?.taskGroup?.code,
     (task) => formatExecutors(task),
     (task) => formatDateTimeFromISO(task?.dateCreated),

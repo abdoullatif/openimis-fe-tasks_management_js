@@ -65,7 +65,7 @@ class TaskHeadPanel extends FormPanel {
               module="tasksManagement"
               label="task.source"
               readOnly={readOnly}
-              value={task?.source}
+              value={task?.sourceLabel || task?.source}
               onChange={(source) => this.updateAttribute('source', source)}
             />
           </Grid>
@@ -74,7 +74,7 @@ class TaskHeadPanel extends FormPanel {
               module="tasksManagement"
               label="task.type"
               readOnly={readOnly}
-              value={trimBusinessEvent(task?.businessEvent)}
+              value={task?.typeLabel || trimBusinessEvent(task?.businessEvent)}
               onChange={(type) => this.updateAttribute('type', type)}
             />
           </Grid>
@@ -83,7 +83,7 @@ class TaskHeadPanel extends FormPanel {
               module="tasksManagement"
               label="task.entity"
               readOnly={readOnly}
-              value={task?.entityString}
+              value={task?.entityLabel || task?.entityString}
               onChange={(entity) => this.updateAttribute('entity', entity)}
             />
           </Grid>

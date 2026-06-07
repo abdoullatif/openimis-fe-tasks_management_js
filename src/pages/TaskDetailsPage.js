@@ -13,6 +13,7 @@ import _ from 'lodash';
 import TaskHeadPanel from '../components/TaskHeadPanel';
 import TaskPreviewPanel from '../components/TaskPreviewPanel';
 import TaskApprovementPanel from '../components/TaskApprovementPanel';
+import TaskResolveProgressDialog from '../components/dialogs/TaskResolveProgressDialog';
 import { clearTask, fetchTask, updateTask } from '../actions';
 import { TASK_STATUS as taskStatus } from '../constants';
 
@@ -97,6 +98,7 @@ function TaskDetailsPage({
   return (
     <div className={classes.page}>
       <Helmet title={formatMessage('task.detailsPage.triage.title')} />
+      <TaskResolveProgressDialog open={submittingMutation} />
       <Form
         module="tasksManagement"
         title={formatMessage('task.detailsPage.triage.title')}

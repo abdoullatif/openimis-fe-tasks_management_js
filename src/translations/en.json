@@ -53,6 +53,8 @@
   "tasksManagement.task.resolve.confirm.title": "Resolve task",
   "tasksManagement.task.resolve.confirm.approve.message": "Are you sure you want to approve this task?",
   "tasksManagement.task.resolve.confirm.fail.message": "Are you sure you want to fail this task?",
+  "tasksManagement.task.resolveProgress.title": "Validation in progress",
+  "tasksManagement.task.resolveProgress.message": "Processing task validation, please wait…",
   "tasksManagement.menu.taskExecutionerGroups": "Task Executioner Groups",
   "tasksManagement.TaskSourcePicker.label": "Task Sources",
   "tasksManagement.TaskSourcePicker.placeholder": "Search for task sources...",

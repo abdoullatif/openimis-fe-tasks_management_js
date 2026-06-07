@@ -53,6 +53,8 @@
   "tasksManagement.task.resolve.confirm.title": "Résoudre la tâche",
   "tasksManagement.task.resolve.confirm.approve.message": "Êtes-vous sûr de vouloir approuver cette tâche ?",
   "tasksManagement.task.resolve.confirm.fail.message": "Êtes-vous sûr de vouloir rejeter cette tâche ?",
+  "tasksManagement.task.resolveProgress.title": "Validation en cours",
+  "tasksManagement.task.resolveProgress.message": "Traitement de la validation de la tâche, veuillez patienter…",
   "tasksManagement.menu.taskExecutionerGroups": "Groupes d'Exécuteurs",
   "tasksManagement.TaskSourcePicker.label": "Sources de Tâches",
   "tasksManagement.TaskSourcePicker.placeholder": "Rechercher des sources...",

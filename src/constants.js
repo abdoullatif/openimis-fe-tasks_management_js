@@ -79,6 +79,7 @@ export const TASK_AVAILABLE_SOURCES = [
   'payroll_reconciliation',
   'payroll_reject',
   'payroll_delete',
+  'subvention_productif',
   'CreateDeduplicationReviewTasksService',
 ];
 
